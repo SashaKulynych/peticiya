@@ -3,8 +3,47 @@
   height: 100%;
   display: flex;
   flex: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.App .header {
+  padding: 20px;
+}
+
+.loader-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
+  background-color: rgba(255,255,255,0.8);
+  z-index: 1000;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: rgb(15, 131, 171);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .App-logo {
