@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
-import { AxisOptions, Chart } from 'react-charts';
+import { Chart } from 'react-charts';
 
 import * as Actions from './Actions';
 import ResizableBox from './ResizableBox';
