@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import { Chart } from 'react-charts';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import * as Actions from './Actions';
 import ResizableBox from './ResizableBox';
@@ -30,6 +32,10 @@ function App() {
     };
     init();
   }, []);
+  const count = data
+    .map((v) => v.data.length)
+    .reduce((partialSum, a) => partialSum + a, 0);
+  const percentage = (count * 100) / 25000;
   return (
     <div className="App">
       {loading && (
@@ -38,10 +44,10 @@ function App() {
         </div>
       )}
       <div className="header">
-        <Typography variant="h3" component="h3" fontWeight={700}>
+        <Typography variant="h3" component="h3" fontWeight={700} align="center">
           Статистика
         </Typography>
-        <Typography variant="h5" component="h5">
+        <Typography variant="h5" component="h5" align="center">
           Присвоєння почесного звання Героя України (посмертно) солдату 93
           окремої механізованої бригади "Холодний Яр" Яцуну Сергію Олеговичу,
           який загинув, мужньо захищаючи Україну та її народ
@@ -49,30 +55,46 @@ function App() {
       </div>
 
       {data.length > 0 && (
-        <ResizableBox>
-          <Chart
-            options={{
-              data: [
-                {
-                  label: 'Line',
-                  data
-                }
-              ],
-              primaryAxis: {
-                getValue: (v: any) => v.date
-              },
-              secondaryAxes: [
-                {
-                  getValue: (v: any) => v.data.length
-                }
-              ]
-            }}
-          />
-        </ResizableBox>
+        <>
+          <Typography
+            variant="h5"
+            fontWeight={700}
+            component="h5"
+            align="center"
+          >
+            {`${count} / 25000`}
+          </Typography>
+          <div className="circle-bar-container">
+            <div className="circle-bar">
+              <CircularProgressbar value={percentage} text={`${percentage}%`} />
+            </div>
+          </div>
+
+          <ResizableBox>
+            <Chart
+              options={{
+                data: [
+                  {
+                    label: 'Line',
+                    data
+                  }
+                ],
+                primaryAxis: {
+                  getValue: (v: any) => v.date
+                },
+                secondaryAxes: [
+                  {
+                    getValue: (v: any) => v.data.length
+                  }
+                ]
+              }}
+            />
+          </ResizableBox>
+        </>
       )}
       <div style={{ margin: 20 }}>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Дата</TableCell>
@@ -80,7 +102,7 @@ function App() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((row) => (
+              {[...data].reverse().map((row) => (
                 <TableRow
                   key={row.date}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
