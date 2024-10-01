@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/peticiya/static/css/main.5bf30eaa.css",
-    "main.js": "/peticiya/static/js/main.e45be44c.js",
+    "main.css": "/peticiya/static/css/main.8d964abf.css",
+    "main.js": "/peticiya/static/js/main.faa47f64.js",
     "static/js/453.8b6976a6.chunk.js": "/peticiya/static/js/453.8b6976a6.chunk.js",
     "static/media/roboto-latin-700-normal.woff2": "/peticiya/static/media/roboto-latin-700-normal.4535474e1cf8598695ad.woff2",
     "static/media/roboto-latin-500-normal.woff2": "/peticiya/static/media/roboto-latin-500-normal.7077203b1982951ecf76.woff2",
@@ -60,12 +60,12 @@
     "static/media/roboto-greek-ext-300-normal.woff": "/peticiya/static/media/roboto-greek-ext-300-normal.b590dbe5c639944366d1.woff",
     "static/media/roboto-greek-ext-400-normal.woff": "/peticiya/static/media/roboto-greek-ext-400-normal.16eb83b4a3b1ea994243.woff",
     "index.html": "/peticiya/index.html",
-    "main.5bf30eaa.css.map": "/peticiya/static/css/main.5bf30eaa.css.map",
-    "main.e45be44c.js.map": "/peticiya/static/js/main.e45be44c.js.map",
+    "main.8d964abf.css.map": "/peticiya/static/css/main.8d964abf.css.map",
+    "main.faa47f64.js.map": "/peticiya/static/js/main.faa47f64.js.map",
     "453.8b6976a6.chunk.js.map": "/peticiya/static/js/453.8b6976a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5bf30eaa.css",
-    "static/js/main.e45be44c.js"
+    "static/css/main.8d964abf.css",
+    "static/js/main.faa47f64.js"
   ]
 }
