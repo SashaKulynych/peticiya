@@ -1,17 +1,15 @@
 import axios from 'axios'
-import { IDataResponse } from '../types'
+import { IData } from '../types'
 
-const axiosInstance = axios.create();
-
-export const getData = async (data: {
-    petitionId: number
-    pageNumber: number
-}): Promise<IDataResponse | undefined> => {
-    const { petitionId, pageNumber } = data
+//https://peticiya-ua-server.vercel.app
+//http://localhost:5000
+export const getData = async (): Promise<IData | undefined> => {
     try {
-        const response = await axiosInstance.get(`https://petition.president.gov.ua/petition/${petitionId}/votes/${pageNumber}/json`)
+        const response = await axios.get(`https://peticiya-ua-server.vercel.app/api/getData`)
         if (response) {
-            return response.data
+            if (response.data.success) {
+                return response.data.data
+            }
         }
         return
     } catch (e) {

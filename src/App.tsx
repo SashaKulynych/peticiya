@@ -16,70 +16,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-const cachedData = require('./Actions/data.json') as IData;
-
 function App() {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<IData>([...cachedData].reverse());
+  const [data, setData] = useState<IData>([]);
   useEffect(() => {
-    const arr: IData = [...cachedData];
-    let pageNumber = 1;
-    setLoading(true);
-    const onFinish = () => {
-      setData(arr.reverse());
-      setLoading(false);
-    };
     const init = async () => {
-      const response = await Actions.getData({
-        petitionId: 234334,
-        pageNumber
-      });
+      setLoading(true);
+      const response = await Actions.getData();
       if (response) {
-        const parser = new DOMParser();
-        const dom = parser.parseFromString(response.table_html, 'text/html');
-        let finish = false;
-        const tableExist = dom.querySelector('.table_row');
-        if (tableExist) {
-          const elements = dom.querySelectorAll('.table_row');
-          for (let index = 0; index <= elements.length; index++) {
-            const element = elements[index];
-            if (element) {
-              const number = element.querySelector('.number')?.innerHTML || '';
-              const name = element.querySelector('.name')?.innerHTML || '';
-              const date = element.querySelector('.date')?.innerHTML || '';
-              const newItem = {
-                number,
-                name,
-                date
-              };
-              const i = arr.findIndex((v) => v.date === date);
-              if (i !== -1) {
-                const alreadyExist = arr[i].data.find(
-                  (v) => v.name === newItem.name
-                );
-                if (alreadyExist) {
-                  finish = true;
-                } else {
-                  arr[i].data.push(newItem);
-                }
-              } else {
-                arr.unshift({
-                  date,
-                  data: [newItem]
-                });
-              }
-            }
-          }
-          if (finish) {
-            onFinish();
-          } else {
-            pageNumber++;
-            init();
-          }
-        } else {
-          onFinish();
-        }
+        setData(response.reverse());
       }
+      setLoading(false);
     };
     init();
   }, []);
