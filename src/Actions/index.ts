@@ -8,7 +8,7 @@ export const getData = async (): Promise<IData | undefined> => {
         const response = await axios.get(`https://peticiya-ua-server.vercel.app/api/getData`)
         if (response) {
             if (response.data.success) {
-                return response.data.data
+                return (response.data.data as IData).sort((a, b) => a.dateTimestamp - b.dateTimestamp)
             }
         }
         return

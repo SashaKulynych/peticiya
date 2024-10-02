@@ -4,6 +4,7 @@ export interface IDataResponse {
 }
 
 export type IData = {
+    dateTimestamp: number
     date: string;
     data: {
         number: string;

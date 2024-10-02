@@ -35,7 +35,7 @@ function App() {
       setLoading(true);
       const response = await Actions.getData();
       if (response) {
-        setData(response.reverse());
+        setData(response);
       }
       setLoading(false);
     };
