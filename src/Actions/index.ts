@@ -5,7 +5,7 @@ import { IData } from '../types'
 //http://localhost:5000
 export const getData = async (): Promise<IData | undefined> => {
     try {
-        const response = await axios.get(`https://peticiya-ua-server.vercel.app/api/getData`)
+        const response = await axios.get(`http://localhost:5000/api/getData`)
         if (response) {
             if (response.data.success) {
                 return (response.data.data as IData).sort((a, b) => a.dateTimestamp - b.dateTimestamp)

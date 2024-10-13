@@ -53,7 +53,7 @@ function App() {
     });
   }, []);
   const count = data
-    .map((v) => v.data.length)
+    .map((v) => v.total)
     .reduce((partialSum, a) => partialSum + a, 0);
   const percentage = (count * 100) / 25000;
   return (
@@ -129,7 +129,7 @@ function App() {
                   },
                   secondaryAxes: [
                     {
-                      getValue: (v: any) => v.data.length
+                      getValue: (v: any) => v.total
                     }
                   ]
                 }}
@@ -167,7 +167,7 @@ function App() {
                     <TableCell component="th" scope="row">
                       {row.date}
                     </TableCell>
-                    <TableCell align="right">{row.data.length}</TableCell>
+                    <TableCell align="right">{row.total}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

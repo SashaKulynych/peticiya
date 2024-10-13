@@ -6,11 +6,8 @@ export interface IDataResponse {
 export type IData = {
     dateTimestamp: number
     date: string;
-    data: {
-        number: string;
-        name: string;
-        date: string;
-    }[];
+    isFinished?: boolean
+    total: number
 }[];
 
 export interface IJSONData {
