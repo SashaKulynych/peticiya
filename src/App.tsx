@@ -56,6 +56,14 @@ function App() {
     .map((v) => v.total)
     .reduce((partialSum, a) => partialSum + a, 0);
   const percentage = (count * 100) / 25000;
+
+  const leftDays =
+    90 -
+    Math.floor(
+      (new Date().getTime() - data[0]?.dateTimestamp || 0) /
+        (24 * 60 * 60 * 1000)
+    ) +
+    2;
   return (
     <>
       <div className="switcher">
@@ -114,7 +122,15 @@ function App() {
                 />
               </div>
             </div>
-
+            <div className="days-left-container">
+              <b>{`Залишилося ${leftDays} днів`}</b>
+              <div className="progress-bar">
+                <div
+                  className="progress"
+                  style={{ width: `${100 - (leftDays * 100) / 90}%` }}
+                />
+              </div>
+            </div>
             <ResizableBox>
               <Chart
                 options={{

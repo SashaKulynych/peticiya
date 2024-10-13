@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,700');
 
+.days-left-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 0;
+  .progress-bar {
+    margin: 20px 0 0 0;
+    width: 85vw;
+    height: 20px;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #2196f350;
+    .progress {
+      background-color: #2196f3;
+      height: 100%;
+    }
+  }
+}
+
 .switcher {
   position: absolute;
   right: 20px;
@@ -62,7 +82,7 @@
     -webkit-transform: translateX(24px);
     -ms-transform: translateX(24px);
     transform: translateX(24px);
-    background: rgba(0,0,0,0.3) url('https://i.ibb.co/FxzBYR9/night.png');
+    background: rgba(0, 0, 0, 0.3) url('https://i.ibb.co/FxzBYR9/night.png');
     background-repeat: no-repeat;
     background-position: center;
   }
